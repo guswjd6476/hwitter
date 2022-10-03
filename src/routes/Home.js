@@ -1,13 +1,25 @@
 import { dbService } from "fbase";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import Hweet from "components/Hweet";
 
-const Home = () => {
+const Home = ({userObj}) => {
     const [hweet, setHweet] = useState()
+    const [hweets, setHweets] = useState([])
+    useEffect(() => {
+        dbService.collection("hweet").onSnapshot((snapshot) => {
+          const nweetArray = snapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }));
+          setHweets(nweetArray);
+        });
+      }, []);
     const onSubmit = async (event)=> {
         event.preventDefault()
         await dbService.collection("hweet").add({
-            hweet,
-            createdAt : Date.now()
+            text:hweet,
+            createdAt : Date.now(),
+            creatorId : userObj.uid,
         })
         setHweet("")
     }
@@ -23,6 +35,11 @@ const Home = () => {
                 <input value={hweet} onChange={onChange} type="text" placeholder="What's on your mind?" maxLength={120}/>
                 <input type="submit" value="hweet"/>
             </form>
+            <div>
+                {hweets.map((hweet) => (
+                    <Hweet key={hweet.id} hweetObj={hweet} isOwner={hweet.creatorId === userObj.uid}/>
+                ))}
+            </div>
         </div>
     )
 }
