@@ -29,10 +29,22 @@ const Home = ({userObj}) => {
         } = event
         setHweet(value)
     }
+    const onChangeFile = (event) =>{
+        const {
+            target: {files},
+        } = event;
+        const theFile = files[0]
+        const fileReader = new FileReader();
+        fileReader.onloadend = (finishedEvent) => {
+            console.log(finishedEvent)
+        }
+        fileReader.readAsDataURL(theFile)
+    }
     return(
         <div>
             <form onSubmit={onSubmit}>
                 <input value={hweet} onChange={onChange} type="text" placeholder="What's on your mind?" maxLength={120}/>
+                <input type="file" accept="image/*" onChange={onChangeFile}/>
                 <input type="submit" value="hweet"/>
             </form>
             <div>
