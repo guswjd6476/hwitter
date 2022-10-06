@@ -1,4 +1,6 @@
-import React from "react";
+
+import React, { useState } from "react";
+import { authService } from "../fbase";
 
 const AuthForm = () => {
     const [email, setEmail] =  useState("")
@@ -50,4 +52,4 @@ const AuthForm = () => {
    
 }
 
-export default AuthFrom
+export default AuthForm

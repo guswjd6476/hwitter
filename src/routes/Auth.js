@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { authService, firebaseInstance } from "../fbase";
-
+import AuthForm from "components/AuthForm";
 
 const Auth = ()=> {
     const onSocailClick = async(event) => {
@@ -17,7 +17,7 @@ const Auth = ()=> {
 
     return (
     <div>
-        
+        <AuthForm/>
         <div>
             <button name="google" onClick={onSocailClick}>구글로 </button> 
             <button name="github" onClick={onSocailClick}>깃허브로</button>
