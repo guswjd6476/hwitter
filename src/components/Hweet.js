@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { dbService, storageService } from "fbase";
+import { updateProfile } from "@firebase/auth";
 
-const Hweet = ({ hweetObj, isOwner }) => {
+const Hweet = ({userObj, hweetObj, isOwner }) => {
   const [editing, setEditing] = useState(false);
   const [newHweet, setHewNweet] = useState(hweetObj.text);
   const onDeleteClick = async () => {
@@ -27,6 +28,7 @@ const Hweet = ({ hweetObj, isOwner }) => {
   };
   return (
     <div className="hweetbox">
+       <span className="username">{userObj.displayName}</span>
       {editing ? (
         <>
           <form  onSubmit={onSubmit}>

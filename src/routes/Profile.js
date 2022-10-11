@@ -33,11 +33,13 @@ export default({refreshUser, userObj})=> {
     },[])
     return (
         <>
-            <form onSubmit={onSubmit}>
-                <input onChange={onChange} type="text" placeholder="Display neme" value={newDisplayName} />
-                <input type="submit" value="Update profile" />
-            </form>
-            <button onClick={onLogOutClick}>Logout</button>
+            <div className="hweetbox">
+                <form className="profilebox" onSubmit={onSubmit}>
+                    <input className="input" onChange={onChange} type="text" placeholder="Display neme" value={newDisplayName} />
+                    <input className="btn_sub" type="submit" value="Update" />
+                    <button className="btn_sub" onClick={onLogOutClick}>Logout</button>
+                </form>
+            </div>     
         </>
     )
 } 

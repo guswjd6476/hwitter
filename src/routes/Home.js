@@ -21,7 +21,7 @@ const Home = ({userObj}) => {
               <HweetFactory userObj={userObj}/>
               <div>
                   {hweets.map((hweet) => (
-                      <Hweet key={hweet.id} hweetObj={hweet} isOwner={hweet.creatorId === userObj.uid}/>
+                      <Hweet key={hweet.id} userObj={userObj} hweetObj={hweet} isOwner={hweet.creatorId === userObj.uid}/>
                   ))}
               </div>
           </div>

@@ -58,19 +58,19 @@ const HweetFactory = ({userObj}) =>{
     const fileInput = useRef();
     return (
             <form className="new_hweet" onSubmit={onSubmit}>
-                <div className="inputbox">
+                 <div className="inputbox">
                     <input value={hweet} onChange={onChange} type="text" placeholder="What's on your mind?" maxLength={120}/>
                 </div>
                 <div className="btn_wrap">    
-                    <div className="filebox">파일첨부
+                    <div className="filebox btn_sub">파일첨부
                         <input className="fileinput" type="file" accept="image/*" onChange={onChangeFile}  ref={fileInput}/>
                     </div>
-                    <div>    
-                        <input type="submit" value="hweet"/>
+                    <div >    
+                        <input className="btn_sub" type="submit" value="hweet"/>
                     </div>
                 </div>    
                 {attachment && (
-                    <div>
+                    <div className="attachbox">
                         <img src={attachment} width="50px" height="50px" />
                         <button onClick={onClearAttachment}>Clear</button>
                     </div>
