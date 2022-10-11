@@ -16,13 +16,15 @@ const Home = ({userObj}) => {
         });
       }, []);
     return(
-        <div>
-            <HweetFactory userObj={userObj}/>
-            <div>
-                {hweets.map((hweet) => (
-                    <Hweet key={hweet.id} hweetObj={hweet} isOwner={hweet.creatorId === userObj.uid}/>
-                ))}
-            </div>
+        <div className="contain">
+          <div className="auth_contain">
+              <HweetFactory userObj={userObj}/>
+              <div>
+                  {hweets.map((hweet) => (
+                      <Hweet key={hweet.id} hweetObj={hweet} isOwner={hweet.creatorId === userObj.uid}/>
+                  ))}
+              </div>
+          </div>
         </div>
     )
 }

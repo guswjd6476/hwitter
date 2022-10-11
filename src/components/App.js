@@ -31,7 +31,6 @@ function App() {
   return (
     <>
       {init ? <AppRouter refreshUser={refreshUser} isLoggedIn={Boolean(userObj)} userObj={userObj}/> : "Initializing...."}
-      <footer>&copy; Hwitter {new Date().getFullYear()}</footer>
     </>
   ); 
 }

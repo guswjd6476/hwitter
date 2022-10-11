@@ -4,6 +4,7 @@ import Auth from "routes/Auth";
 import Home from "routes/Home";
 import Profile from "routes/Profile";
 import Navigation from "components/Navigation";
+import HweetFactory from "./HweetFactory";
 
 const AppRouter =  ({ refreshUser, isLoggedIn, userObj }) => {
     return(
@@ -12,17 +13,17 @@ const AppRouter =  ({ refreshUser, isLoggedIn, userObj }) => {
             <Switch>
                 {isLoggedIn ? (
                 <> 
-                <Route exact path="/" base="/">
-                    <Home userObj={userObj} />
-                </Route> 
-                <Route exact path="/profile" base="/">
-                    <Profile userObj={userObj} refreshUser={refreshUser}/>
-                </Route> 
-                <Redirect from="*" to="/" />
+                    <Route exact path="/" base="/">
+                        <Home userObj={userObj} />
+                    </Route> 
+                    <Route exact path="/profile" base="/">
+                        <Profile userObj={userObj} refreshUser={refreshUser}/>
+                    </Route> 
+                    <Redirect from="*" to="/" />
                 </> ) : (
                 <>
                     <Route exact path="/" base="/"> <Auth /></Route>
-                <Redirect from="*" to="/" />
+                    <Redirect from="*" to="/" />
                 </>
             )}
             </Switch>

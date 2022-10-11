@@ -16,11 +16,13 @@ const Auth = ()=> {
     }
 
     return (
-    <div>
-        <AuthForm/>
-        <div>
-            <button name="google" onClick={onSocailClick}>구글로 </button> 
-            <button name="github" onClick={onSocailClick}>깃허브로</button>
+    <div className="contain">    
+        <div className="auth_contain">
+            <AuthForm/>
+            <div className="btn_social_wrap">
+                <button className="btn_social" name="google" onClick={onSocailClick}>구글로 </button> 
+                <button className="btn_social" name="github" onClick={onSocailClick}>깃허브로</button>
+            </div>
         </div>
     </div>
     )

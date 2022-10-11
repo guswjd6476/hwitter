@@ -26,10 +26,10 @@ const Hweet = ({ hweetObj, isOwner }) => {
     setHewNweet(value);
   };
   return (
-    <div>
+    <div className="hweetbox">
       {editing ? (
         <>
-          <form onSubmit={onSubmit}>
+          <form  onSubmit={onSubmit}>
             <input
               type="text"
               placeholder="Edit your nweet"
@@ -37,20 +37,29 @@ const Hweet = ({ hweetObj, isOwner }) => {
               required
               onChange={onChange}
             />
-            <input type="submit" value="Update Hweet" />
+            <div className="btn_wrap">
+              <input className="btn_sub" type="submit" value="수정" />
+              <button className="btn_sub" onClick={toggleEditing}>취소</button>
+            </div>  
           </form>
-          <button onClick={toggleEditing}>Cancel</button>
+          
         </>
       ) : (
         <>
-          <h4>{hweetObj.text}</h4>
-          {hweetObj.attachmentUrl && <img src={hweetObj.attachmentUrl} width="100px" height="100px" />}
-          {isOwner && (
+        {isOwner && (
             <>
-              <button onClick={onDeleteClick}>Delete Hweet</button>
-              <button onClick={toggleEditing}>Edit Hweet</button>
+              <div className="btn_wrap">
+                <button className="mini_btn" onClick={toggleEditing}>
+                  <img src={process.env.PUBLIC_URL + `/img/edit.png`} alt="" />
+                </button>
+                <button className="mini_btn"  onClick={onDeleteClick}>
+                  <img src={process.env.PUBLIC_URL + `/img/delet.png`} alt="" />
+                </button> 
+              </div>
             </>
           )}
+          <h4 className="hweet_text">{hweetObj.text}</h4>
+          {hweetObj.attachmentUrl && <img src={hweetObj.attachmentUrl} width="100px" height="100px" />}
         </>
       )}
     </div>
