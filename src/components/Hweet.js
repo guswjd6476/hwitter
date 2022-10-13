@@ -28,10 +28,11 @@ const Hweet = ({userObj, hweetObj, isOwner }) => {
   };
   return (
     <div className="hweetbox">
-       <span className="username">{userObj.displayName}</span>
       {editing ? (
         <>
           <form  onSubmit={onSubmit}>
+
+       <span className="username">{userObj.displayName}</span>
             <input
               type="text"
               placeholder="Edit your nweet"
@@ -48,6 +49,10 @@ const Hweet = ({userObj, hweetObj, isOwner }) => {
         </>
       ) : (
         <>
+
+       <span className="username">{userObj.displayName}</span>
+       <h4 className="hweet_text">{hweetObj.text}</h4>
+          {hweetObj.attachmentUrl && <img src={hweetObj.attachmentUrl} width="100px" height="100px" />}
         {isOwner && (
             <>
               <div className="btn_wrap">
@@ -60,8 +65,7 @@ const Hweet = ({userObj, hweetObj, isOwner }) => {
               </div>
             </>
           )}
-          <h4 className="hweet_text">{hweetObj.text}</h4>
-          {hweetObj.attachmentUrl && <img src={hweetObj.attachmentUrl} width="100px" height="100px" />}
+        
         </>
       )}
     </div>
